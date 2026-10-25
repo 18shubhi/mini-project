@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">Campus<span>Find</span></a>
+    <a class="nav-link" href="index.html">Change role</a>
+  </header>
+
+  <main class="center-page">
+    <section class="panel login-panel">
+      <div class="big-icon">🔐</div>
+      <p class="eyebrow">YOUR CAMPUS ACCOUNT</p>
+      <h1 id="loginTitle">Campus Login</h1>
+      <p class="muted">Enter your details to continue.</p>
+
+      <form id="loginForm">
+        <label for="fullName">Full name</label>
+        <input id="fullName" type="text" placeholder="Enter your full name" required>
+
+        <label for="campusId">College ID / Email</label>
+        <input id="campusId" type="text" placeholder="Enter your college ID or email" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter a demo password" required>
+
+        <p id="loginMessage" class="message"></p>
+        <button class="primary-btn full" type="submit">Login →</button>
+      </form>
+
+      <p class="small-note">
+        Student, Faculty and Supporting Staff use the same form layout.
+      </p>
+    </section>
+  </main>
+
+  <footer>CampusFind · College Lost-and-Found Project</footer>
+</body>
+</html>

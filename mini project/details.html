@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Item Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="dashboard.html">Campus<span>Find</span></a>
+    <a class="nav-link" href="choice.html">← Back</a>
+  </header>
+
+  <main class="container form-container">
+    <section class="panel">
+      <p class="eyebrow">ITEM INFORMATION</p>
+      <h1 id="detailsTitle">Report an Item</h1>
+      <p id="detailsSubtitle" class="muted">
+        Share the details to help the campus community.
+      </p>
+
+      <form id="detailsForm">
+        <label for="itemName">Item name *</label>
+        <input id="itemName" type="text"
+          placeholder="e.g. Black wallet, blue bottle" required>
+
+        <label for="category">Category *</label>
+        <select id="category" required>
+          <option value="">Select a category</option>
+          <option>Electronics</option>
+          <option>Books & Notes</option>
+          <option>Bags & Wallets</option>
+          <option>Clothing</option>
+          <option>Keys & ID Cards</option>
+          <option>Water Bottles</option>
+          <option>Accessories</option>
+          <option>Other</option>
+        </select>
+
+        <label for="location">Location on campus *</label>
+        <input id="location" type="text"
+          placeholder="e.g. Library, Block C, canteen" required>
+
+        <label for="itemDate">Date lost / found *</label>
+        <input id="itemDate" type="date" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" rows="4"
+          placeholder="Colour, brand, identifying marks or other details"></textarea>
+
+        <label for="contact">Contact information (optional)</label>
+        <input id="contact" type="text"
+          placeholder="College email or preferred contact">
+
+        <label for="itemPhoto">Item photo (optional)</label>
+        <input id="itemPhoto" type="file" accept="image/*">
+        <p class="small-note">Demo note: the selected photo is previewed but not uploaded to a server.</p>
+        <img id="photoPreview" class="photo-preview" alt="Selected item preview" hidden>
+
+        <button class="primary-btn full" type="submit">Submit Report →</button>
+        <p id="detailsMessage" class="message"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>CampusFind · Helping lost items find their way home.</footer>
+</body>
+</html>

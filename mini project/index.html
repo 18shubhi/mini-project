@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Choose Role</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">Campus<span>Find</span></a>
+    <span class="tagline">Lost on campus? Find it smarter.</span>
+  </header>
+
+  <main class="center-page">
+    <section class="panel wide">
+      <p class="eyebrow">WELCOME TO CAMPUSFIND</p>
+      <h1>Find what matters.</h1>
+      <p class="muted">Choose your campus role to continue.</p>
+
+      <div class="role-grid">
+        <button class="role-card" data-role="Student" type="button">
+          <span class="emoji">🎓</span>
+          <strong>Student</strong>
+          <small>I'm a student</small>
+        </button>
+
+        <button class="role-card" data-role="Faculty" type="button">
+          <span class="emoji">📚</span>
+          <strong>Faculty</strong>
+          <small>I'm a faculty member</small>
+        </button>
+
+        <button class="role-card" data-role="Supporting Staff" type="button">
+          <span class="emoji">🏫</span>
+          <strong>Supporting Staff</strong>
+          <small>I'm campus staff</small>
+        </button>
+      </div>
+
+      <p id="roleMessage" class="message"></p>
+      <button id="roleContinue" class="primary-btn full" type="button">
+        Continue →
+      </button>
+    </section>
+  </main>
+
+  <footer>CampusFind · College Lost-and-Found Project</footer>
+</body>
+</html>

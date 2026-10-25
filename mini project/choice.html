@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Lost or Found</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="dashboard.html">Campus<span>Find</span></a>
+    <a class="nav-link" href="dashboard.html">← Dashboard</a>
+  </header>
+
+  <main class="center-page">
+    <section class="panel wide">
+      <p class="eyebrow">LET'S GET STARTED</p>
+      <h1>What would you like to do?</h1>
+      <p class="muted">Choose the option that matches your situation.</p>
+
+      <div class="choice-grid">
+        <button class="choice-card lost-choice" data-type="Lost" type="button">
+          <span class="choice-emoji">🔎</span>
+          <h2>I Lost an Item</h2>
+          <p>Tell us what you lost so it can be found.</p>
+          <span class="choice-action">Report Lost Item →</span>
+        </button>
+
+        <button class="choice-card found-choice" data-type="Found" type="button">
+          <span class="choice-emoji">🎒</span>
+          <h2>I Found an Item</h2>
+          <p>Help return an item to its rightful owner.</p>
+          <span class="choice-action">Report Found Item →</span>
+        </button>
+      </div>
+
+      <p id="choiceMessage" class="message"></p>
+    </section>
+  </main>
+
+  <footer>CampusFind · Every item deserves a way home.</footer>
+</body>
+</html>
