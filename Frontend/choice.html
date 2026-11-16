@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body data-page="choice">
   <header class="navbar">
     <a class="brand" href="dashboard.html">Campus<span>Find</span></a>
-    <a class="nav-link" href="dashboard.html">← Dashboard</a>
+    <div class="nav-actions">
+      <span id="userBadge" class="user-badge">Campus Member</span>
+      <a class="nav-link" href="dashboard.html">← Dashboard</a>
+      <button class="outline-btn logout-button" type="button">Log out</button>
+    </div>
   </header>
 
   <main class="center-page">
@@ -21,14 +25,14 @@
       <p class="muted">Choose the option that matches your situation.</p>
 
       <div class="choice-grid">
-        <button class="choice-card lost-choice" data-type="Lost" type="button">
+        <button class="choice-card lost-choice" data-type="LOST" type="button">
           <span class="choice-emoji">🔎</span>
           <h2>I Lost an Item</h2>
           <p>Tell us what you lost so it can be found.</p>
           <span class="choice-action">Report Lost Item →</span>
         </button>
 
-        <button class="choice-card found-choice" data-type="Found" type="button">
+        <button class="choice-card found-choice" data-type="FOUND" type="button">
           <span class="choice-emoji">🎒</span>
           <h2>I Found an Item</h2>
           <p>Help return an item to its rightful owner.</p>
@@ -36,7 +40,7 @@
         </button>
       </div>
 
-      <p id="choiceMessage" class="message"></p>
+      <p id="choiceMessage" class="message" role="status" aria-live="polite"></p>
     </section>
   </main>
 

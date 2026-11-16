@@ -1,0 +1,1 @@
+"""CampusFind Django project package."""

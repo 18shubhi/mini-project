@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="auth">
+  <header class="navbar">
+    <a class="brand" href="index.html">Campus<span>Find</span></a>
+    <a class="nav-link" href="index.html">Change role</a>
+  </header>
+
+  <main class="center-page">
+    <section class="panel login-panel">
+      <div class="big-icon">🔐</div>
+      <p class="eyebrow">YOUR CAMPUS ACCOUNT</p>
+      <h1 id="loginTitle">Campus Login</h1>
+      <p id="authSubtitle" class="muted">Sign in to your campus account.</p>
+
+      <div class="segmented-control" role="tablist" aria-label="Account action">
+        <button id="loginModeButton" class="segment active" type="button" role="tab" aria-selected="true">Log in</button>
+        <button id="registerModeButton" class="segment" type="button" role="tab" aria-selected="false">Create account</button>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <label for="loginEmail">Campus email</label>
+        <input id="loginEmail" name="email" type="email" autocomplete="username" placeholder="name@college.edu" required>
+
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+
+        <p id="loginMessage" class="message" role="status" aria-live="polite"></p>
+        <button class="primary-btn full" type="submit">Log in →</button>
+      </form>
+
+      <form id="registerForm" hidden novalidate>
+        <label for="registerName">Full name</label>
+        <input id="registerName" name="name" type="text" autocomplete="name" maxlength="150" required>
+
+        <label for="registerEmail">Campus email</label>
+        <input id="registerEmail" name="email" type="email" autocomplete="email" required>
+
+        <label for="registerPassword">Password</label>
+        <input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="8" required>
+
+        <label for="registerPasswordConfirm">Confirm password</label>
+        <input id="registerPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+
+        <p class="small-note">Account role: <strong id="registerRole"></strong></p>
+        <p id="registerMessage" class="message" role="status" aria-live="polite"></p>
+        <button class="primary-btn full" type="submit">Create account →</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>CampusFind · College Lost-and-Found Project</footer>
+</body>
+</html>

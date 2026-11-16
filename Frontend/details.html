@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body data-page="details">
   <header class="navbar">
     <a class="brand" href="dashboard.html">Campus<span>Find</span></a>
-    <a class="nav-link" href="choice.html">← Back</a>
+    <div class="nav-actions">
+      <span id="userBadge" class="user-badge">Campus Member</span>
+      <a class="nav-link" href="dashboard.html">← Dashboard</a>
+      <button class="outline-btn logout-button" type="button">Log out</button>
+    </div>
   </header>
 
   <main class="container form-container">
@@ -22,7 +26,13 @@
         Share the details to help the campus community.
       </p>
 
-      <form id="detailsForm">
+      <form id="detailsForm" novalidate>
+        <label for="itemType">Report type *</label>
+        <select id="itemType" required>
+          <option value="LOST">Lost</option>
+          <option value="FOUND">Found</option>
+        </select>
+
         <label for="itemName">Item name *</label>
         <input id="itemName" type="text"
           placeholder="e.g. Black wallet, blue bottle" required>
@@ -51,17 +61,13 @@
         <textarea id="description" rows="4"
           placeholder="Colour, brand, identifying marks or other details"></textarea>
 
-        <label for="contact">Contact information (optional)</label>
-        <input id="contact" type="text"
-          placeholder="College email or preferred contact">
-
         <label for="itemPhoto">Item photo (optional)</label>
         <input id="itemPhoto" type="file" accept="image/*">
-        <p class="small-note">Demo note: the selected photo is previewed but not uploaded to a server.</p>
+        <p class="small-note">Images up to 5 MB are uploaded with your report.</p>
         <img id="photoPreview" class="photo-preview" alt="Selected item preview" hidden>
 
-        <button class="primary-btn full" type="submit">Submit Report →</button>
-        <p id="detailsMessage" class="message"></p>
+        <button id="submitReportButton" class="primary-btn full" type="submit">Submit report →</button>
+        <p id="detailsMessage" class="message" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>

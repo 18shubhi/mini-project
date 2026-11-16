@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind | Item</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="item">
+  <header class="navbar">
+    <a class="brand" href="dashboard.html">Campus<span>Find</span></a>
+    <div class="nav-actions">
+      <span id="userBadge" class="user-badge">Campus Member</span>
+      <a class="nav-link" href="dashboard.html">← Dashboard</a>
+      <button class="outline-btn logout-button" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="container detail-container">
+    <p id="itemLoading" class="loading-message">Loading item…</p>
+    <p id="itemError" class="message error-message" role="alert"></p>
+    <article id="itemContent" class="item-detail panel" hidden>
+      <div id="itemDetailBody"></div>
+      <div id="itemActions" class="action-row"></div>
+    </article>
+
+    <section id="claimSection" class="panel content-section" hidden>
+      <p class="eyebrow">CLAIM THIS ITEM</p>
+      <h2>Why does it belong to you?</h2>
+      <form id="claimForm" novalidate>
+        <label for="claimReason">Identifying details</label>
+        <textarea id="claimReason" rows="4" maxlength="2000" required placeholder="Describe details only the owner would know."></textarea>
+        <button id="submitClaimButton" class="primary-btn" type="submit">Submit claim</button>
+      </form>
+    </section>
+
+    <section id="matchesSection" class="content-section" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">SMART SUGGESTIONS</p><h2>Possible matches</h2></div>
+        <button id="loadMatchesButton" class="outline-light-btn" type="button">Find matches</button>
+      </div>
+      <p class="small-note">Similarity scores are suggestions, not certainty.</p>
+      <div id="matchesList" class="report-grid"></div>
+      <p id="matchesEmpty" class="muted" hidden>No possible matches found.</p>
+      <p id="matchesError" class="message error-message" role="alert"></p>
+    </section>
+
+    <section id="claimsSection" class="content-section" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">RECOVERY</p><h2>Claims for this item</h2></div>
+        <span id="itemRecoveryStatus" class="status-pill"></span>
+      </div>
+      <div id="itemClaimsList" class="stack-list"></div>
+      <p id="itemClaimsEmpty" class="muted" hidden>No claims for this item.</p>
+      <p id="claimActionMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>CampusFind · Helping lost items find their way home.</footer>
+</body>
+</html>
