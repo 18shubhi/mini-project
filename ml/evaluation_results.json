@@ -1,0 +1,1047 @@
+{
+  "dataset": {
+    "file": "evaluation_dataset.csv",
+    "sha256": "024f417093e3385bfd4c3aac57a14f455b59f3114a00182e040bac8f841d0360",
+    "pairs": 32,
+    "positive_pairs": 8,
+    "negative_pairs": 24,
+    "queries": 8,
+    "construction": "Synthetic demo pairs manually annotated before scoring; no algorithm predictions used as labels",
+    "limitations": [
+      "Small, synthetic, manually authored dataset; it is not sampled from college-wide reports.",
+      "Only LOST source to FOUND candidate direction is represented.",
+      "Each query has four candidates and at least one manually labelled relevant candidate.",
+      "Labels are scenario judgments; ambiguous or underspecified reports are labelled negative when identity cannot be established from the supplied evidence.",
+      "Metrics describe this fixed demo set only and do not establish real-world performance."
+    ]
+  },
+  "evaluation": {
+    "binary_decision": "score >= effective NOTIFICATION_MATCH_MIN_SCORE; this is the notification cutoff, not a match filter in the suggestions API",
+    "threshold": 35.0,
+    "retrieval_metrics": "Macro-average over query groups; Precision@K divides relevant results in top K by K; Recall@K divides by relevant candidates in the query.",
+    "retrieval_k": [
+      1,
+      3
+    ],
+    "models": {
+      "hybrid": {
+        "TP": 8,
+        "TN": 11,
+        "FP": 13,
+        "FN": 0,
+        "accuracy": 0.59375,
+        "precision": 0.38095238095238093,
+        "recall": 1.0,
+        "f1_score": 0.5517241379310345,
+        "precision_at_1": 0.75,
+        "recall_at_1": 0.75,
+        "precision_at_3": 0.3333333333333333,
+        "recall_at_3": 1.0
+      },
+      "text_only": {
+        "TP": 3,
+        "TN": 24,
+        "FP": 0,
+        "FN": 5,
+        "accuracy": 0.84375,
+        "precision": 1.0,
+        "recall": 0.375,
+        "f1_score": 0.5454545454545454,
+        "precision_at_1": 1.0,
+        "recall_at_1": 1.0,
+        "precision_at_3": 0.3333333333333333,
+        "recall_at_3": 1.0
+      },
+      "structured_only": {
+        "TP": 8,
+        "TN": 3,
+        "FP": 21,
+        "FN": 0,
+        "accuracy": 0.34375,
+        "precision": 0.27586206896551724,
+        "recall": 1.0,
+        "f1_score": 0.4324324324324324,
+        "precision_at_1": 0.125,
+        "recall_at_1": 0.125,
+        "precision_at_3": 0.25,
+        "recall_at_3": 0.75
+      }
+    }
+  },
+  "hybrid_pair_results": [
+    {
+      "pair_id": "Q1-C1",
+      "query_id": "Q1",
+      "condition": "clear identifying details",
+      "ground_truth": 1,
+      "manual_label_reason": "Matching student ID suffix and crescent scratch identify the described wallet",
+      "hybrid_score": 74.6,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q1-C2",
+      "query_id": "Q1",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "The wallet has different identifying marks and a different ID suffix",
+      "hybrid_score": 61.04,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q1-C3",
+      "query_id": "Q1",
+      "condition": "partial similarity and colour difference",
+      "ground_truth": 0,
+      "manual_label_reason": "Blue wallet has no matching scratch or ID details",
+      "hybrid_score": 48.02,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q1-C4",
+      "query_id": "Q1",
+      "condition": "unrelated item",
+      "ground_truth": 0,
+      "manual_label_reason": "An umbrella is not the described wallet",
+      "hybrid_score": 0.73,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q2-C1",
+      "query_id": "Q2",
+      "condition": "missing descriptions",
+      "ground_truth": 1,
+      "manual_label_reason": "The sparse reports share the distinctive steel bottle item name and category",
+      "hybrid_score": 57.38,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q2-C2",
+      "query_id": "Q2",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "A travel mug is a different item type despite shared steel wording",
+      "hybrid_score": 25.73,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q2-C3",
+      "query_id": "Q2",
+      "condition": "colour information",
+      "ground_truth": 0,
+      "manual_label_reason": "The red plastic bottle has a different material and identifying colour",
+      "hybrid_score": 43.8,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q2-C4",
+      "query_id": "Q2",
+      "condition": "incomplete noisy report",
+      "ground_truth": 0,
+      "manual_label_reason": "The generic report lacks enough identifying evidence to establish it is this bottle",
+      "hybrid_score": 12.92,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q3-C1",
+      "query_id": "Q3",
+      "condition": "different wording for same item",
+      "ground_truth": 1,
+      "manual_label_reason": "Yellow star keychain and torn mesh pocket match despite rucksack/backpack wording",
+      "hybrid_score": 45.79,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q3-C2",
+      "query_id": "Q3",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "The red basketball keychain and intact pocket conflict with the lost report",
+      "hybrid_score": 50.72,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q3-C3",
+      "query_id": "Q3",
+      "condition": "partial similarity",
+      "ground_truth": 0,
+      "manual_label_reason": "A duffel bag is not the backpack and has no matching keychain details",
+      "hybrid_score": 41.82,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q3-C4",
+      "query_id": "Q3",
+      "condition": "different category",
+      "ground_truth": 0,
+      "manual_label_reason": "A notebook is unrelated to the described backpack",
+      "hybrid_score": 31.03,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q4-C1",
+      "query_id": "Q4",
+      "condition": "spelling variation and different wording",
+      "ground_truth": 1,
+      "manual_label_reason": "Polka dots and curved wooden handle match despite spelling and wording variation",
+      "hybrid_score": 45.62,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q4-C2",
+      "query_id": "Q4",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "A purple raincoat is not an umbrella",
+      "hybrid_score": 28.24,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q4-C3",
+      "query_id": "Q4",
+      "condition": "partial similarity and colour difference",
+      "ground_truth": 0,
+      "manual_label_reason": "The umbrella colour differs and the report lacks matching dot details",
+      "hybrid_score": 44.85,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q4-C4",
+      "query_id": "Q4",
+      "condition": "incomplete report",
+      "ground_truth": 0,
+      "manual_label_reason": "A generic umbrella report contains no distinguishing evidence to link it to this one",
+      "hybrid_score": 16.0,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q5-C1",
+      "query_id": "Q5",
+      "condition": "missing colour and different wording",
+      "ground_truth": 1,
+      "manual_label_reason": "Single left earbud with scratched shell matches; colour is not reported",
+      "hybrid_score": 47.64,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q5-C2",
+      "query_id": "Q5",
+      "condition": "similar text but different physical item",
+      "ground_truth": 0,
+      "manual_label_reason": "A charging case is not the single left earbud described",
+      "hybrid_score": 42.01,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q5-C3",
+      "query_id": "Q5",
+      "condition": "partial similarity",
+      "ground_truth": 0,
+      "manual_label_reason": "A pair of earbuds is not the reported single left earbud and no scratch matches",
+      "hybrid_score": 38.6,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q5-C4",
+      "query_id": "Q5",
+      "condition": "unrelated item",
+      "ground_truth": 0,
+      "manual_label_reason": "A speaker is not an earbud",
+      "hybrid_score": 32.22,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q6-C1",
+      "query_id": "Q6",
+      "condition": "different wording and date/location variation",
+      "ground_truth": 1,
+      "manual_label_reason": "Thin gold band and A.S. engraving identify the ring although location wording and date differ",
+      "hybrid_score": 50.38,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q6-C2",
+      "query_id": "Q6",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "The wide band, red stone and R.K. engraving contradict the report",
+      "hybrid_score": 47.5,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q6-C3",
+      "query_id": "Q6",
+      "condition": "partial similarity",
+      "ground_truth": 0,
+      "manual_label_reason": "A blue stone pendant is not a ring and lacks the A.S. engraving",
+      "hybrid_score": 51.79,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q6-C4",
+      "query_id": "Q6",
+      "condition": "similar colour but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "A gold bracelet is not the described ring",
+      "hybrid_score": 41.05,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q7-C1",
+      "query_id": "Q7",
+      "condition": "long description and identifying details",
+      "ground_truth": 1,
+      "manual_label_reason": "Model, colour, sticker, missing key and lab location all match",
+      "hybrid_score": 69.89,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q7-C2",
+      "query_id": "Q7",
+      "condition": "same model but different actual item",
+      "ground_truth": 0,
+      "manual_label_reason": "The white calculator has different identifying features and owner initials",
+      "hybrid_score": 38.73,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q7-C3",
+      "query_id": "Q7",
+      "condition": "partial similarity",
+      "ground_truth": 0,
+      "manual_label_reason": "A different calculator model with no matching identifying marks is not the reported one",
+      "hybrid_score": 32.13,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q7-C4",
+      "query_id": "Q7",
+      "condition": "different item category",
+      "ground_truth": 0,
+      "manual_label_reason": "A chemistry notebook is not a calculator",
+      "hybrid_score": 25.92,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q8-C1",
+      "query_id": "Q8",
+      "condition": "different wording and same identifying feature",
+      "ground_truth": 1,
+      "manual_label_reason": "The orange fox drawing inside the A5 spiral sketchbook matches",
+      "hybrid_score": 47.0,
+      "hybrid_rank": 1,
+      "predicted_at_notification_cutoff": 1,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q8-C2",
+      "query_id": "Q8",
+      "condition": "similar item name but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "The blue notebook has stars rather than the matching orange fox drawing",
+      "hybrid_score": 44.88,
+      "hybrid_rank": 2,
+      "predicted_at_notification_cutoff": 1,
+      "status": "FAIL"
+    },
+    {
+      "pair_id": "Q8-C3",
+      "query_id": "Q8",
+      "condition": "similar wording but different item",
+      "ground_truth": 0,
+      "manual_label_reason": "An orange fox pin is not a sketchbook",
+      "hybrid_score": 29.85,
+      "hybrid_rank": 3,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    },
+    {
+      "pair_id": "Q8-C4",
+      "query_id": "Q8",
+      "condition": "incomplete report and date/location differences",
+      "ground_truth": 0,
+      "manual_label_reason": "A generic sketchbook report with distant date and location offers no matching identifying detail",
+      "hybrid_score": 12.93,
+      "hybrid_rank": 4,
+      "predicted_at_notification_cutoff": 0,
+      "status": "PASS"
+    }
+  ],
+  "robustness": [
+    {
+      "condition": "clear identifying details",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q1-C1",
+          "query_id": "Q1",
+          "condition": "clear identifying details",
+          "ground_truth": 1,
+          "manual_label_reason": "Matching student ID suffix and crescent scratch identify the described wallet",
+          "hybrid_score": 74.6,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "colour information",
+      "pairs": 1,
+      "passed": 0,
+      "failed": 1,
+      "cases": [
+        {
+          "pair_id": "Q2-C3",
+          "query_id": "Q2",
+          "condition": "colour information",
+          "ground_truth": 0,
+          "manual_label_reason": "The red plastic bottle has a different material and identifying colour",
+          "hybrid_score": 43.8,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "different category",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q3-C4",
+          "query_id": "Q3",
+          "condition": "different category",
+          "ground_truth": 0,
+          "manual_label_reason": "A notebook is unrelated to the described backpack",
+          "hybrid_score": 31.03,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "different item category",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q7-C4",
+          "query_id": "Q7",
+          "condition": "different item category",
+          "ground_truth": 0,
+          "manual_label_reason": "A chemistry notebook is not a calculator",
+          "hybrid_score": 25.92,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "different wording and date/location variation",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q6-C1",
+          "query_id": "Q6",
+          "condition": "different wording and date/location variation",
+          "ground_truth": 1,
+          "manual_label_reason": "Thin gold band and A.S. engraving identify the ring although location wording and date differ",
+          "hybrid_score": 50.38,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "different wording and same identifying feature",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q8-C1",
+          "query_id": "Q8",
+          "condition": "different wording and same identifying feature",
+          "ground_truth": 1,
+          "manual_label_reason": "The orange fox drawing inside the A5 spiral sketchbook matches",
+          "hybrid_score": 47.0,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "different wording for same item",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q3-C1",
+          "query_id": "Q3",
+          "condition": "different wording for same item",
+          "ground_truth": 1,
+          "manual_label_reason": "Yellow star keychain and torn mesh pocket match despite rucksack/backpack wording",
+          "hybrid_score": 45.79,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "incomplete noisy report",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q2-C4",
+          "query_id": "Q2",
+          "condition": "incomplete noisy report",
+          "ground_truth": 0,
+          "manual_label_reason": "The generic report lacks enough identifying evidence to establish it is this bottle",
+          "hybrid_score": 12.92,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "incomplete report",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q4-C4",
+          "query_id": "Q4",
+          "condition": "incomplete report",
+          "ground_truth": 0,
+          "manual_label_reason": "A generic umbrella report contains no distinguishing evidence to link it to this one",
+          "hybrid_score": 16.0,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "incomplete report and date/location differences",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q8-C4",
+          "query_id": "Q8",
+          "condition": "incomplete report and date/location differences",
+          "ground_truth": 0,
+          "manual_label_reason": "A generic sketchbook report with distant date and location offers no matching identifying detail",
+          "hybrid_score": 12.93,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "long description and identifying details",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q7-C1",
+          "query_id": "Q7",
+          "condition": "long description and identifying details",
+          "ground_truth": 1,
+          "manual_label_reason": "Model, colour, sticker, missing key and lab location all match",
+          "hybrid_score": 69.89,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "missing colour and different wording",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q5-C1",
+          "query_id": "Q5",
+          "condition": "missing colour and different wording",
+          "ground_truth": 1,
+          "manual_label_reason": "Single left earbud with scratched shell matches; colour is not reported",
+          "hybrid_score": 47.64,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "missing descriptions",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q2-C1",
+          "query_id": "Q2",
+          "condition": "missing descriptions",
+          "ground_truth": 1,
+          "manual_label_reason": "The sparse reports share the distinctive steel bottle item name and category",
+          "hybrid_score": 57.38,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "partial similarity",
+      "pairs": 4,
+      "passed": 1,
+      "failed": 3,
+      "cases": [
+        {
+          "pair_id": "Q3-C3",
+          "query_id": "Q3",
+          "condition": "partial similarity",
+          "ground_truth": 0,
+          "manual_label_reason": "A duffel bag is not the backpack and has no matching keychain details",
+          "hybrid_score": 41.82,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q5-C3",
+          "query_id": "Q5",
+          "condition": "partial similarity",
+          "ground_truth": 0,
+          "manual_label_reason": "A pair of earbuds is not the reported single left earbud and no scratch matches",
+          "hybrid_score": 38.6,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q6-C3",
+          "query_id": "Q6",
+          "condition": "partial similarity",
+          "ground_truth": 0,
+          "manual_label_reason": "A blue stone pendant is not a ring and lacks the A.S. engraving",
+          "hybrid_score": 51.79,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q7-C3",
+          "query_id": "Q7",
+          "condition": "partial similarity",
+          "ground_truth": 0,
+          "manual_label_reason": "A different calculator model with no matching identifying marks is not the reported one",
+          "hybrid_score": 32.13,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "partial similarity and colour difference",
+      "pairs": 2,
+      "passed": 0,
+      "failed": 2,
+      "cases": [
+        {
+          "pair_id": "Q1-C3",
+          "query_id": "Q1",
+          "condition": "partial similarity and colour difference",
+          "ground_truth": 0,
+          "manual_label_reason": "Blue wallet has no matching scratch or ID details",
+          "hybrid_score": 48.02,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q4-C3",
+          "query_id": "Q4",
+          "condition": "partial similarity and colour difference",
+          "ground_truth": 0,
+          "manual_label_reason": "The umbrella colour differs and the report lacks matching dot details",
+          "hybrid_score": 44.85,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "same model but different actual item",
+      "pairs": 1,
+      "passed": 0,
+      "failed": 1,
+      "cases": [
+        {
+          "pair_id": "Q7-C2",
+          "query_id": "Q7",
+          "condition": "same model but different actual item",
+          "ground_truth": 0,
+          "manual_label_reason": "The white calculator has different identifying features and owner initials",
+          "hybrid_score": 38.73,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "similar colour but different item",
+      "pairs": 1,
+      "passed": 0,
+      "failed": 1,
+      "cases": [
+        {
+          "pair_id": "Q6-C4",
+          "query_id": "Q6",
+          "condition": "similar colour but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "A gold bracelet is not the described ring",
+          "hybrid_score": 41.05,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "similar item name but different item",
+      "pairs": 6,
+      "passed": 2,
+      "failed": 4,
+      "cases": [
+        {
+          "pair_id": "Q1-C2",
+          "query_id": "Q1",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "The wallet has different identifying marks and a different ID suffix",
+          "hybrid_score": 61.04,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q2-C2",
+          "query_id": "Q2",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "A travel mug is a different item type despite shared steel wording",
+          "hybrid_score": 25.73,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        },
+        {
+          "pair_id": "Q3-C2",
+          "query_id": "Q3",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "The red basketball keychain and intact pocket conflict with the lost report",
+          "hybrid_score": 50.72,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q4-C2",
+          "query_id": "Q4",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "A purple raincoat is not an umbrella",
+          "hybrid_score": 28.24,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        },
+        {
+          "pair_id": "Q6-C2",
+          "query_id": "Q6",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "The wide band, red stone and R.K. engraving contradict the report",
+          "hybrid_score": 47.5,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        },
+        {
+          "pair_id": "Q8-C2",
+          "query_id": "Q8",
+          "condition": "similar item name but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "The blue notebook has stars rather than the matching orange fox drawing",
+          "hybrid_score": 44.88,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "similar text but different physical item",
+      "pairs": 1,
+      "passed": 0,
+      "failed": 1,
+      "cases": [
+        {
+          "pair_id": "Q5-C2",
+          "query_id": "Q5",
+          "condition": "similar text but different physical item",
+          "ground_truth": 0,
+          "manual_label_reason": "A charging case is not the single left earbud described",
+          "hybrid_score": 42.01,
+          "hybrid_rank": 2,
+          "predicted_at_notification_cutoff": 1,
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "condition": "similar wording but different item",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q8-C3",
+          "query_id": "Q8",
+          "condition": "similar wording but different item",
+          "ground_truth": 0,
+          "manual_label_reason": "An orange fox pin is not a sketchbook",
+          "hybrid_score": 29.85,
+          "hybrid_rank": 3,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "spelling variation and different wording",
+      "pairs": 1,
+      "passed": 1,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q4-C1",
+          "query_id": "Q4",
+          "condition": "spelling variation and different wording",
+          "ground_truth": 1,
+          "manual_label_reason": "Polka dots and curved wooden handle match despite spelling and wording variation",
+          "hybrid_score": 45.62,
+          "hybrid_rank": 1,
+          "predicted_at_notification_cutoff": 1,
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "condition": "unrelated item",
+      "pairs": 2,
+      "passed": 2,
+      "failed": 0,
+      "cases": [
+        {
+          "pair_id": "Q1-C4",
+          "query_id": "Q1",
+          "condition": "unrelated item",
+          "ground_truth": 0,
+          "manual_label_reason": "An umbrella is not the described wallet",
+          "hybrid_score": 0.73,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        },
+        {
+          "pair_id": "Q5-C4",
+          "query_id": "Q5",
+          "condition": "unrelated item",
+          "ground_truth": 0,
+          "manual_label_reason": "A speaker is not an earbud",
+          "hybrid_score": 32.22,
+          "hybrid_rank": 4,
+          "predicted_at_notification_cutoff": 0,
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "configuration": {
+    "text": {
+      "fields": [
+        "title",
+        "description"
+      ],
+      "normalization": "Unicode casefold, then ASCII [a-z0-9]+ tokens",
+      "stop_words": [
+        "a",
+        "an",
+        "and",
+        "at",
+        "by",
+        "for",
+        "from",
+        "in",
+        "is",
+        "it",
+        "of",
+        "on",
+        "or",
+        "the",
+        "to",
+        "was",
+        "with"
+      ],
+      "stemming_or_lemmatization": false,
+      "terms": "Unigrams and adjacent bigrams after stop-word removal",
+      "term_frequency": "Raw token/bigram counts",
+      "inverse_document_frequency": "log((1 + document_count) / (1 + document_frequency)) + 1",
+      "vector_normalization": "L2",
+      "similarity": "Cosine dot product",
+      "idf_scope": "Source report plus all eligible candidates for that query"
+    },
+    "feature_weights": {
+      "text_similarity": 0.55,
+      "category_match": 0.15,
+      "colour_similarity": 0.1,
+      "location_similarity": 0.12,
+      "date_similarity": 0.08
+    },
+    "colour_extraction": {
+      "fields": [
+        "title",
+        "description"
+      ],
+      "method": "Casefolded word-boundary tokens intersected with fixed vocabulary",
+      "vocabulary": [
+        "beige",
+        "black",
+        "blue",
+        "brown",
+        "gold",
+        "gray",
+        "green",
+        "grey",
+        "navy",
+        "orange",
+        "pink",
+        "purple",
+        "red",
+        "silver",
+        "white",
+        "yellow"
+      ],
+      "similarity": "Jaccard; feature omitted if either side has no detected colour"
+    },
+    "category": "Case-insensitive exact equality; omitted when either category is missing",
+    "location": "Jaccard over casefolded [a-z0-9]+ token sets; omitted if either is missing",
+    "date": "exp(-absolute_day_difference / 30); omitted if either date is missing or invalid",
+    "missing_feature_handling": "Omit unavailable features and renormalize active weights",
+    "score": "100 * weighted mean; rounded to two decimals by rank_matches",
+    "notification_cutoff": {
+      "value": 35.0,
+      "semantics": "Notifications are emitted at score >= this cutoff; API suggestions are not filtered by it"
+    },
+    "suggestion_limit": {
+      "API_default": 10,
+      "API_allowed_range": [
+        1,
+        50
+      ],
+      "UI_requested_limit": 10
+    }
+  },
+  "environment": {
+    "python": "3.13.7",
+    "django": "5.2.18",
+    "os": "Windows 11",
+    "architecture": "AMD64",
+    "ml_libraries": "CampusFind matcher uses Python standard library only"
+  }
+}
